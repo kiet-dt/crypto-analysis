@@ -33,6 +33,7 @@ The pipeline collects the following types of market data for multiple cryptocurr
 - XRPUSDT (Ripple)
 
 ## Project Structure
+
 crypto-analysis/
 ├── dags/                     # Airflow DAG definitions
 │   ├── bookTicker.py         # BookTicker data streaming
@@ -64,17 +65,25 @@ crypto-analysis/
 - At least 8GB RAM available
 - Ports available: 8080, 9092, 9200, 5601, 3000, 9021, 7077, 9090
 ### Installation
-1. **Clone the repository**ash
+1. **Clone the repository**
+
    git clone <repository-url>
+
    cd crypto-analysis
-   2. **Build Docker images**
+
+2. **Build Docker images**
+
    docker-compose build
-   3. **Start all services**
+
+3. **Start all services**
+
    docker-compose up -d
-   4. **Wait for services to initialize**
-   The first startup may take a few minutes. Check service health:ash
-   docker-compose ps
-   ### Accessing Services
+
+4. **Wait for services to initialize**
+
+   The first startup may take a few minutes. Check service health: docker-compose ps
+
+### Accessing Services
 Once all services are running, you can access:
 - **Airflow Web UI**: http://localhost:8080
   - Username: `admin`
