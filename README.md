@@ -66,17 +66,14 @@ crypto-analysis/
 - Ports available: 8080, 9092, 9200, 5601, 3000, 9021, 7077, 9090
 ### Installation
 1. **Clone the repository**
-
    git clone <repository-url>
+
    cd crypto-analysis
 2. **Build Docker images**
-
    docker-compose build
 3. **Start all services**
-
    docker-compose up -d
 4. **Wait for services to initialize**
-
    The first startup may take a few minutes. Check service health: docker-compose ps
 ### Accessing Services
 Once all services are running, you can access:
@@ -90,7 +87,7 @@ Once all services are running, you can access:
   - Username: `admin`
   - Password: `admin`
 - **Spark Master UI**: http://localhost:9090
-## 📝 Configuration
+## Configuration
 ### Airflow DAGs
 Each DAG is configured to run daily and streams data for 10 minutes (600 seconds). You can modify the streaming duration in the respective DAG files:
 - `dags/bookTicker.py`
@@ -116,7 +113,8 @@ Data is stored in the following indices:
 ### Manual Execution
 1. **Start Spark Streaming job** (if not running automatically):
    docker exec -it spark-master /opt/spark/bin/spark-submit --master spark://spark-master:7077 --jars /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.4.2.jar,/opt/spark/jars/kafka-clients-3.4.0.jar,/opt/spark/jars/spark-token-provider-kafka-0-10_2.12-3.4.2.jar,/opt/spark/jars/commons-pool2-2.11.1.jar,/opt/spark/jars/elasticsearch-spark-30_2.12-8.11.3.jar /opt/spark-jobs/spark_stream.py
-   2. **Trigger Airflow DAGs**:
+
+2. **Trigger Airflow DAGs**:
    - Navigate to Airflow UI: http://localhost:8080
    - Enable and trigger the desired DAGs:
      - `bookTicker_automation`
@@ -125,17 +123,13 @@ Data is stored in the following indices:
      - `depth_automation`
      - `kline1m_automation`
 ### Scheduled Execution
-
 DAGs are configured to run daily at midnight (00:00 UTC). They will automatically:
 1. Connect to Binance WebSocket API
 2. Stream data for 10 minutes
 3. Send data to Kafka topics
 4. Spark processes and stores data in Elasticsearch
-
 ## Data Processing
-
 ### Spark Transformations
-
 The Spark Streaming job performs the following transformations:
 
 **Ticker Data**:
@@ -150,51 +144,37 @@ The Spark Streaming job performs the following transformations:
 - Calculates price_change_percent
 - Calculates volatility (high - low)
 - Converts timestamps for event_time, start_time, close_time
-
 ## Monitoring & Visualization
-
 ### Viewing Data in Kibana
-
 1. Access Kibana: http://localhost:5601
 2. Navigate to "Discover"
 3. Select an index (e.g., `ticker_index`)
 4. Explore and visualize your data
-
 ### Viewing Data in Grafana
-
 1. Access Grafana: http://localhost:3000
 2. Configure Elasticsearch as a data source
 3. Create dashboards for real-time monitoring
-
 ### Generated Dashboards
-
 Pre-generated dashboard images are stored in the `dashboard/` directory:
 - `ticker-24h/`: 24-hour ticker overview
 - `depth/`: Order book depth visualizations
 - `kline-1m/`: 1-minute candlestick charts
 - `trade-flow/`: Trade flow visualizations
-
 ## Development
-
 ### Adding New Trading Pairs
-
 1. Update the WebSocket URL in the respective DAG file:
    url = "wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/.../newpair@ticker"
-   2. Restart the DAG to apply changes
 
+2. Restart the DAG to apply changes
 ### Modifying Data Schemas
-
 1. Update the schema in `schemas/<schema_name>_schema.py`
 2. Update the Spark transformation logic in `spark_stream.py`
 3. Restart Spark Streaming job
-
 ## Dependencies
-
 ### Python Packages
 - `kafka-python==2.2.15`
 - `elasticsearch==8.12.0`
 - `websockets==13.1`
-
 ### JAR Files
 - `spark-sql-kafka-0-10_2.12-3.4.2.jar`
 - `kafka-clients-3.4.0.jar`
