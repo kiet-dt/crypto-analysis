@@ -1,5 +1,5 @@
-# Crypto Analysis Pipeline
-A real-time cryptocurrency data analysis pipeline that collects, processes, and visualizes market data from Binance exchange using Apache Airflow, Kafka, Spark Streaming, and Elasticsearch.
+# Crypto Analysis
+A real-time cryptocurrency data analysis pipeline that collects, processes, and visualizes market data from Binance exchange using Apache Airflow, Kafka, Spark Streaming, Elasticsearch and Grafana.
 
 ## Overview
 This project implements an end-to-end data pipeline for cryptocurrency market analysis. It streams real-time data from Binance WebSocket API, processes it through Kafka and Spark, stores it in Elasticsearch, and provides visualization dashboards.
