@@ -68,21 +68,16 @@ crypto-analysis/
 1. **Clone the repository**
 
    git clone <repository-url>
-
    cd crypto-analysis
-
 2. **Build Docker images**
 
    docker-compose build
-
 3. **Start all services**
 
    docker-compose up -d
-
 4. **Wait for services to initialize**
 
    The first startup may take a few minutes. Check service health: docker-compose ps
-
 ### Accessing Services
 Once all services are running, you can access:
 - **Airflow Web UI**: http://localhost:8080
