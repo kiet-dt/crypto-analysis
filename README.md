@@ -34,7 +34,7 @@ The pipeline collects the following types of market data for multiple cryptocurr
 
 ## Project Structure
 
-crypto-analysis/
+crypto-analysis/ \
 ├── dags/                     # Airflow DAG definitions \
 │   ├── bookTicker.py         # BookTicker data streaming \
 │   ├── ticker.py             # Ticker data streaming \
@@ -57,7 +57,7 @@ crypto-analysis/
 ├── docker-compose.yaml       # Docker Compose configuration \
 ├── Dockerfile.airflow        # Airflow Docker image \
 ├── Dockerfile.spark          # Spark Docker image \
-└── requirements.txt          # Python dependencies \
+└── requirements.txt          # Python dependencies 
 
 ## Getting Started
 ### Prerequisites
