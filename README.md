@@ -35,29 +35,29 @@ The pipeline collects the following types of market data for multiple cryptocurr
 ## Project Structure
 
 crypto-analysis/
-├── dags/                     # Airflow DAG definitions
-│   ├── bookTicker.py         # BookTicker data streaming
-│   ├── ticker.py             # Ticker data streaming
-│   ├── trade.py              # Trade data streaming
-│   ├── depth.py              # Depth data streaming
-│   └── kline1m.py            # Kline 1-minute data streaming
-├── schemas/                  # Spark data schemas
-│   ├── bookTicker_schema.py
-│   ├── ticker_schema.py
-│   ├── trade_schema.py
-│   ├── depth_schema.py
-│   └── kline1m_schema.py
-├── spark_stream.py           # Spark Streaming application
-├── jars/                     # Required JAR dependencies
-├── dashboard/                # Generated visualization dashboards
-│   ├── ticker-24h/
-│   ├── depth/
-│   ├── kline-1m/
-│   └── trade-flow/
-├── docker-compose.yaml       # Docker Compose configuration
-├── Dockerfile.airflow        # Airflow Docker image
-├── Dockerfile.spark          # Spark Docker image
-└── requirements.txt          # Python dependencies
+├── dags/                     # Airflow DAG definitions \
+│   ├── bookTicker.py         # BookTicker data streaming \
+│   ├── ticker.py             # Ticker data streaming \
+│   ├── trade.py              # Trade data streaming \
+│   ├── depth.py              # Depth data streaming \
+│   └── kline1m.py            # Kline 1-minute data streaming \
+├── schemas/                  # Spark data schemas \
+│   ├── bookTicker_schema.py \
+│   ├── ticker_schema.py \
+│   ├── trade_schema.py \
+│   ├── depth_schema.py \
+│   └── kline1m_schema.py \
+├── spark_stream.py           # Spark Streaming application \
+├── jars/                     # Required JAR dependencies \
+├── dashboard/                # Generated visualization dashboards \
+│   ├── ticker-24h/ \
+│   ├── depth/ \
+│   ├── kline-1m/ \
+│   └── trade-flow/ \
+├── docker-compose.yaml       # Docker Compose configuration \
+├── Dockerfile.airflow        # Airflow Docker image \
+├── Dockerfile.spark          # Spark Docker image \
+└── requirements.txt          # Python dependencies \
 
 ## Getting Started
 ### Prerequisites
@@ -128,7 +128,7 @@ Data is stored in the following indices:
 /opt/spark/jars/elasticsearch-spark-30_2.12-8.11.3.jar \
   /opt/spark-jobs/spark_stream.py
 
-3. **Trigger Airflow DAGs**:
+2. **Trigger Airflow DAGs**:
    - Navigate to Airflow UI: http://localhost:8080
    - Enable and trigger the desired DAGs:
      - `bookTicker_automation`
