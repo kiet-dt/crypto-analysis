@@ -6,25 +6,15 @@ This project implements an end-to-end data pipeline for cryptocurrency market an
 
 ## Architecture
 Binance WebSocket API
-
 ↓
-
 Apache Airflow (DAGs)
-
 ↓
-
 Kafka Topics
-
 ↓
-
 Spark Streaming
-
 ↓
-
 Elasticsearch
-
 ↓
-
 Visualization (Grafana)
 
 ## Data Sources
