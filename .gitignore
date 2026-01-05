@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Airflow
+logs/
+*.log
+airflow.db
+airflow.cfg
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+docker-compose.override.yml
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Checkpoints (Spark streaming)
+/tmp/checkpoints/
