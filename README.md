@@ -66,14 +66,18 @@ crypto-analysis/
 - Ports available: 8080, 9092, 9200, 5601, 3000, 9021, 7077, 9090
 ### Installation
 1. **Clone the repository**
+
    git clone <repository-url>
 
    cd crypto-analysis
 2. **Build Docker images**
+
    docker-compose build
-3. **Start all services**
+4. **Start all services**
+
    docker-compose up -d
-4. **Wait for services to initialize**
+6. **Wait for services to initialize**
+
    The first startup may take a few minutes. Check service health: docker-compose ps
 ### Accessing Services
 Once all services are running, you can access:
@@ -112,9 +116,19 @@ Data is stored in the following indices:
 ## Running the Pipeline
 ### Manual Execution
 1. **Start Spark Streaming job** (if not running automatically):
-   docker exec -it spark-master /opt/spark/bin/spark-submit --master spark://spark-master:7077 --jars /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.4.2.jar,/opt/spark/jars/kafka-clients-3.4.0.jar,/opt/spark/jars/spark-token-provider-kafka-0-10_2.12-3.4.2.jar,/opt/spark/jars/commons-pool2-2.11.1.jar,/opt/spark/jars/elasticsearch-spark-30_2.12-8.11.3.jar /opt/spark-jobs/spark_stream.py
 
-2. **Trigger Airflow DAGs**:
+   docker exec -it spark-master \
+  /opt/spark/bin/spark-submit \
+  --master spark://spark-master:7077 \
+  --jars \
+/opt/spark/jars/spark-sql-kafka-0-10_2.12-3.4.2.jar,\
+/opt/spark/jars/kafka-clients-3.4.0.jar,\
+/opt/spark/jars/spark-token-provider-kafka-0-10_2.12-3.4.2.jar,\
+/opt/spark/jars/commons-pool2-2.11.1.jar,\
+/opt/spark/jars/elasticsearch-spark-30_2.12-8.11.3.jar \
+  /opt/spark-jobs/spark_stream.py
+
+3. **Trigger Airflow DAGs**:
    - Navigate to Airflow UI: http://localhost:8080
    - Enable and trigger the desired DAGs:
      - `bookTicker_automation`
