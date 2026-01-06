@@ -5,17 +5,17 @@ A real-time cryptocurrency data analysis pipeline that collects, processes, and 
 This project implements an end-to-end data pipeline for cryptocurrency market analysis. It streams real-time data from Binance WebSocket API, processes it through Kafka and Spark, stores it in Elasticsearch, and provides visualization dashboards.
 
 ## Architecture
-Binance WebSocket API
-↓
-Apache Airflow (DAGs)
-↓
-Kafka Topics
-↓
-Spark Streaming
-↓
-Elasticsearch
-↓
-Visualization (Grafana)
+<p align="center"> Binance WebSocket API </p>
+<p align="center"> ↓ </p>
+<p align="center"> Apache Airflow (DAGs) </p>
+<p align="center"> ↓ </p>
+<p align="center"> Kafka Topics </p>
+<p align="center"> ↓ </p>
+<p align="center"> Spark Streaming </p>
+<p align="center"> ↓ </p>
+<p align="center"> Elasticsearch </p>
+<p align="center"> ↓ </p>
+<p align="center"> Visualization (Grafana) </p>
 
 ## Data Sources
 The pipeline collects the following types of market data for multiple cryptocurrency pairs:
@@ -33,32 +33,32 @@ The pipeline collects the following types of market data for multiple cryptocurr
 - XRPUSDT (Ripple)
 
 ## Project Structure
-
-crypto-analysis/ \
-├── dags/                     # Airflow DAG definitions \
-│   ├── bookTicker.py         # BookTicker data streaming \
-│   ├── ticker.py             # Ticker data streaming \
-│   ├── trade.py              # Trade data streaming \
-│   ├── depth.py              # Depth data streaming \
-│   └── kline1m.py            # Kline 1-minute data streaming \
-├── schemas/                  # Spark data schemas \
-│   ├── bookTicker_schema.py \
-│   ├── ticker_schema.py \
-│   ├── trade_schema.py \
-│   ├── depth_schema.py \
-│   └── kline1m_schema.py \
-├── spark_stream.py           # Spark Streaming application \
-├── jars/                     # Required JAR dependencies \
-├── dashboard/                # Generated visualization dashboards \
-│   ├── ticker-24h/ \
-│   ├── depth/ \
-│   ├── kline-1m/ \
-│   └── trade-flow/ \
-├── docker-compose.yaml       # Docker Compose configuration \
-├── Dockerfile.airflow        # Airflow Docker image \
-├── Dockerfile.spark          # Spark Docker image \
+```
+crypto-analysis/ 
+├── dags/                     # Airflow DAG definitions 
+│   ├── bookTicker.py         # BookTicker data streaming 
+│   ├── ticker.py             # Ticker data streaming 
+│   ├── trade.py              # Trade data streaming 
+│   ├── depth.py              # Depth data streaming 
+│   └── kline1m.py            # Kline 1-minute data streaming 
+├── schemas/                  # Spark data schemas 
+│   ├── bookTicker_schema.py 
+│   ├── ticker_schema.py 
+│   ├── trade_schema.py 
+│   ├── depth_schema.py 
+│   └── kline1m_schema.py 
+├── spark_stream.py           # Spark Streaming application 
+├── jars/                     # Required JAR dependencies 
+├── dashboard/                # Generated visualization dashboards 
+│   ├── ticker-24h/ 
+│   ├── depth/ 
+│   ├── kline-1m/ 
+│   └── trade-flow/ 
+├── docker-compose.yaml       # Docker Compose configuration 
+├── Dockerfile.airflow        # Airflow Docker image 
+├── Dockerfile.spark          # Spark Docker image 
 └── requirements.txt          # Python dependencies 
-
+```
 ## Getting Started
 ### Prerequisites
 - Docker Desktop (or Docker Engine + Docker Compose)
@@ -66,17 +66,21 @@ crypto-analysis/ \
 - Ports available: 8080, 9092, 9200, 5601, 3000, 9021, 7077, 9090
 ### Installation
 1. **Clone the repository**
-
-   git clone <repository-url> \
+```
+   git clone <repository-url>
+```
+```
    cd crypto-analysis
+```
 2. **Build Docker images**
-
-   docker-compose build
-4. **Start all services**
-
+```
+   docker-compose build 
+```
+3. **Start all services**
+```
    docker-compose up -d
-6. **Wait for services to initialize**
-
+```
+4. **Wait for services to initialize** \
    The first startup may take a few minutes. Check service health: docker-compose ps
 ### Accessing Services
 Once all services are running, you can access:
@@ -85,7 +89,6 @@ Once all services are running, you can access:
   - Password: `admin`
 - **Kafka Control Center**: http://localhost:9021
 - **Elasticsearch**: http://localhost:9200
-- **Kibana**: http://localhost:5601
 - **Grafana**: http://localhost:3000
   - Username: `admin`
   - Password: `admin`
@@ -115,7 +118,7 @@ Data is stored in the following indices:
 ## Running the Pipeline
 ### Manual Execution
 1. **Start Spark Streaming job** (if not running automatically):
-```bash
+```
    docker exec -it spark-master \
   /opt/spark/bin/spark-submit \
   --master spark://spark-master:7077 \
@@ -126,7 +129,7 @@ Data is stored in the following indices:
 /opt/spark/jars/commons-pool2-2.11.1.jar,\
 /opt/spark/jars/elasticsearch-spark-30_2.12-8.11.3.jar \
   /opt/spark-jobs/spark_stream.py
-
+```
 2. **Trigger Airflow DAGs**:
    - Navigate to Airflow UI: http://localhost:8080
    - Enable and trigger the desired DAGs:
@@ -170,8 +173,8 @@ Pre-generated dashboard images are stored in the `dashboard/` directory:
 - `trade-flow/`: Trade flow visualizations
 ## Development
 ### Adding New Trading Pairs
-1. Update the WebSocket URL in the respective DAG file:
-   url = "wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/.../newpair@ticker"
+1. Update the WebSocket URL in the respective DAG file: \
+   url = `wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/.../newpair@ticker`
 
 2. Restart the DAG to apply changes
 ### Modifying Data Schemas
