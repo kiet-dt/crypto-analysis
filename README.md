@@ -198,3 +198,26 @@ Pre-generated dashboard images are stored in the `dashboard/` directory:
 - `commons-pool2-2.11.1.jar`
 - `spark-token-provider-kafka-0-10_2.12-3.4.2.jar`
 
+## Results & Dashboards
+
+The pipeline generates comprehensive visualizations for cryptocurrency market analysis. Below are sample dashboards showcasing the results:
+
+### 24-Hour Ticker Overview
+![Ticker Overview](dashboard/ticker-24h/overview.png)
+
+### Order Book Depth Analysis
+Visualization of order book depth for major trading pairs:
+
+**BTCUSDT**  ![BTCUSDT Depth](dashboard/depth/BTCUSDT.png)
+
+### 1-Minute Candlestick Charts
+Real-time price movements captured in 1-minute intervals:
+
+**BTCUSDT**  ![BTCUSDT Kline](dashboard/kline-1m/BTCUSDT.png)
+
+### Trade Flow Analysis
+Trade volume and flow patterns for each trading pair:
+
+**BTCUSDT**  ![BTCUSDT Trade Flow](dashboard/trade-flow/BTCUSDT.png)
+
+
