@@ -136,6 +136,9 @@ services:
     restart: unless-stopped
 
   spark-master:
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
     image: spark-custom:3.4.2
     hostname: spark-master
     container_name: spark-master
@@ -156,6 +159,9 @@ services:
     restart: unless-stopped
 
   spark-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
     image: spark-custom:3.4.2
     hostname: spark-worker
     container_name: spark-worker
