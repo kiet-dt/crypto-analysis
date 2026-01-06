@@ -67,8 +67,7 @@ crypto-analysis/ \
 ### Installation
 1. **Clone the repository**
 
-   git clone <repository-url>
-
+   git clone <repository-url> \
    cd crypto-analysis
 2. **Build Docker images**
 
@@ -116,7 +115,7 @@ Data is stored in the following indices:
 ## Running the Pipeline
 ### Manual Execution
 1. **Start Spark Streaming job** (if not running automatically):
-
+```bash
    docker exec -it spark-master \
   /opt/spark/bin/spark-submit \
   --master spark://spark-master:7077 \
@@ -159,11 +158,6 @@ The Spark Streaming job performs the following transformations:
 - Calculates volatility (high - low)
 - Converts timestamps for event_time, start_time, close_time
 ## Monitoring & Visualization
-### Viewing Data in Kibana
-1. Access Kibana: http://localhost:5601
-2. Navigate to "Discover"
-3. Select an index (e.g., `ticker_index`)
-4. Explore and visualize your data
 ### Viewing Data in Grafana
 1. Access Grafana: http://localhost:3000
 2. Configure Elasticsearch as a data source
