@@ -5,17 +5,22 @@ A real-time cryptocurrency data analysis pipeline that collects, processes, and 
 This project implements an end-to-end data pipeline for cryptocurrency market analysis. It streams real-time data from Binance WebSocket API, processes it through Kafka and Spark, stores it in Elasticsearch, and provides visualization dashboards.
 
 ## Architecture
-<p align="center"> Binance WebSocket API </p>
-<p align="center"> ↓ </p>
-<p align="center"> Apache Airflow (DAGs) </p>
-<p align="center"> ↓ </p>
-<p align="center"> Kafka Topics </p>
-<p align="center"> ↓ </p>
-<p align="center"> Spark Streaming </p>
-<p align="center"> ↓ </p>
-<p align="center"> Elasticsearch </p>
-<p align="center"> ↓ </p>
-<p align="center"> Visualization (Grafana) </p>
+<div align="center">
+
+Binance WebSocket API  
+↓  
+Apache Airflow (DAGs)  
+↓  
+Kafka Topics  
+↓  
+Spark Streaming  
+↓  
+Elasticsearch  
+↓  
+Visualization (Grafana)
+
+</div>
+
 
 ## Data Sources
 The pipeline collects the following types of market data for multiple cryptocurrency pairs:
